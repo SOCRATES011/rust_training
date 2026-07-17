@@ -1,30 +1,43 @@
-// Basic types and type annotations
-fn main() {
-    //Integers: i8, i16, i32, i64, i128, isize(signed) and u8, u16, u32, u64, u128, usize(unsigned)
-    let age: u8 = 30; //unsigned 8-bit (0-255)
-    let temperature = -5; //i32 by default (signed 32-bit)
+// Control flow: if, loop, while, for.
+fn main(){
+    let number = 7;
 
-    //Floats: f32, f64 (default)
-    let pi = 3.14159;   //f64 by default
+    if number < 5 {
+        println!("less than 5");
+    } else if number == 5 {
+        println!("equal to 5");
+    } else {
+        println!("greater than 5");
+    }
+    // 'if' is an expression - it returns a value
+    let result = if number % 2 == 0 { "even" } else {"odd"};
+    println!("{} is {}", number, result);
 
-    //Booleans
-    let is_rust_fun = true; //bool
+    // loop (infinite) - use break to exit
+    let mut counter = 0;
+    let final_value = loop {
+        counter += 1;
+        if counter == 10 {
+            break counter * 2; //break returns a value
+        }
+    };
+    println!("Final value: {}", final_value);
 
-    //Characters (4 bytes, Unicode scalar values)
-    let heart_eyed_cat = '😻'; //char
+    // while
+    let mut n = 3;
+    while n != 0 {
+        println!("{}!", n);
+        n -= 1;
+    }
+    println!("LIFTOFF");
 
-    //Tuples (fixed-size, can contain different types)
-    let tup: (i32, f64, char) = (400, 7.4, 'A');
-    let (x,y,z) = tup; //destructuring
-    println!("x = {}, y = {}, z = {}", x, y, z);
-    println!("first = {}", tup.0); //accessing tuple elements by index
+    //for with range (most common)
+    let arr = [10,20,30,40,50,60,70];
+    for element in arr.iter(){
+        println!("the value is: {}", element);
+    }
 
-    // Arrays (fixed-size, same type, stack-allocated)
-    let arr: [i32; 6] = [1,2,3,6,5,4];
-    println!("arr[2] = {}", arr[2]); //accessing array elements by index
-    let x = 5; 
-    let mut y = 20;
-    y = 10;
-    println!("x: {}, y: {}", x, y);
-
+    for number in (1..4).rev(){ // range 1..4 is 1,2,3
+        println!("{}!", number);
+    }
 }
