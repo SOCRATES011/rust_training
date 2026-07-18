@@ -1,10 +1,10 @@
-// Borrowing with references
+// Mutable references
 fn main(){
-    let s1 = String::from("hello");
-    let len = calculate_length(&s1); // Borrow from s1
-    println!("Length of '{}' is {}", s1, len);
+    let mut s = String::from("hello");
+    change(&mut s);
+    println!("{}", s);
 }
 
-fn calculate_length(s: &String) -> usize {
-    s.len()
-} // s goes out of scope, but it's just a reference, so nothing is freed
+fn change(s: &mut String) {
+    s.push_str(", world! from Socrates on Rust!");
+}
