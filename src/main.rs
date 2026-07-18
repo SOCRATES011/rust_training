@@ -1,10 +1,10 @@
-// Mutable references
+// Session 2 Exercise
 fn main(){
-    let mut s = String::from("hello");
-    change(&mut s);
-    println!("{}", s);
+    let student_name = String::from("Pamilerin");
+    let len = calculate_length(&student_name);
+    println!("The length of '{}' is {}.", student_name, len);
 }
 
-fn change(s: &mut String) {
-    s.push_str(", world! from Socrates on Rust!");
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
