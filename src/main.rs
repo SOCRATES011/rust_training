@@ -10,6 +10,6 @@ fn main(){
 
     //number 4
     let status = if age >= 18 {"adult"} else {"minor"};
-    println!(" I am an {}", status);
+    println!(" {} is {}years old therefore, I am an {}",name, age, status);
 
 }
