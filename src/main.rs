@@ -1,7 +1,14 @@
 // Session 2 Exercise
 fn main(){
-    let student_name = String::from("Pamilerin");
-    let first_name = &student_name;
-    let last_name = &student_name.clone();
-    println!("my full name is {} {}", first_name, last_name);
+    let mut student_name = String::from("Pamilerin");
+    {
+        let full_name = &mut student_name;
+        full_name.push_str(" Esther");
+        println!("My names are: {}", full_name);
+    }
+    // Now new mutable reference can be created
+    let all_name = &mut student_name;
+    all_name.push_str(" Lawal");
+    println!("All my names are: {}", all_name);
 }
+
