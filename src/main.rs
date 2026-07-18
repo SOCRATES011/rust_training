@@ -1,11 +1,10 @@
-// Clone (deep copy)
-fn main() {
+// Borrowing with references
+fn main(){
     let s1 = String::from("hello");
-    let s2 = s1.clone(); // s2 is a deep copy of s1
-    println!("s1 = {}, s2 = {}", s1, s2); // both valid
-
-    // Copy trait
-    let x = 5;
-    let y = x; // y is a copy of x
-    println!("x = {}, y = {}", x, y); // both valid
+    let len = calculate_length(&s1); // Borrow from s1
+    println!("Length of '{}' is {}", s1, len);
 }
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+} // s goes out of scope, but it's just a reference, so nothing is freed
