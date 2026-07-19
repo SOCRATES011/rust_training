@@ -1,4 +1,4 @@
-// SESSION 3
+// SESSION 3 - No. 4 and 5
 // Enums: are algebraic data types, each variant can carry data.
 #[derive(Debug)]
 enum IpAddrKind {
@@ -29,4 +29,18 @@ impl Message {
 enum Option<T> {
     Some(T),
     None,
+}
+
+let some_number = Some(5);
+let absent_number: Option<i32> = None;
+
+// Accessing value: pattern matching or combinators
+match some_number {
+    Some(x) => println!("Value: {}", x);
+    None => println!("Nothing");
+}
+
+// Using if let for concise handling
+if let Some(x) = some_number {
+    println!("Value is {}", x),
 }
