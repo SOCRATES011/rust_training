@@ -1,11 +1,37 @@
 // SESSION 003
-// Tuple struct: named tuple with fields
-struct Color(i32, i32, i32);
-struct Point(i32,i32, i32);
+// Methods: impl block
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+impl Rectangle {
+    //method: takes &self (immutable borrow)
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
 
-let black = Color(0, 0, 0);
-let origin = Point(0, 0, 0);
+    // method: takes &mut self
+    fn double_size(&mut self) {
+        self.width *= 2;
+        self.height *= 2;
+    }
 
-// Unit-like struct: no fields, used for traits
-struct AlwaysEqual;
-let subject = AlwaysEqual;
+    //associated function (no self) - like a static method
+    fn square(size: u32) -> Rectangle {
+        Rectangle { 
+            width: size, 
+            height: size,
+         }
+    }
+}
+
+fn main(){
+    let mut rect = Rectangle {width: 30, height: 50 };
+    println!("Area: {}", rect.area());
+    rect.double_size();
+    println!("Doubled: {:#?}", rect); // pretty debug print, requires #[derive(Debug)]
+
+    let sq = Rectangle::square(20);
+    println!("Square: {:?}", sq);
+}
