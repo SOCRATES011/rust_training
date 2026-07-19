@@ -17,9 +17,16 @@ enum Message {
     ChangeColor(i32, i32, i32),   //tuple-like
 }
 
+
 // Enums can also have methods
 impl Message {
     fn call(&self) {
         //method body
     }
+}
+
+// Option enum - no null (use the standard library Option<T>:
+enum Option<T> {
+    Some(T),
+    None,
 }
