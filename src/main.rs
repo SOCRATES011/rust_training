@@ -1,28 +1,11 @@
-// SESSION 3 - No.6
-// Pattern matching with 'match'
-#[derive(Debug)]
-enum Coin {
-    Penny,
-    Nickel,
-    Dime,
-    Quarter(UsState),
-}
+// Session 3 -- No. 7
+// the 'Result' enum - error handling without exceptions
+use std::fs::File;
 
-#[derive(Debug)]
-enum UsState {
-    Alabama,
-    Alaska,
-    // ...
-}
-
-fn value_in_cents(coin: Coin) -> u8 {
-    match coin {
-        Coin::Penny => 1,
-        Coin::Nickel => 5,
-        Coin::Dime => 10,
-        Coin::Quarter(state) => {
-            println!("State quarter from {:?}!", state);
-            25
-        }
+fn main(){
+    let f = File::open("hello.txt");
+    match f {
+        Ok(file) => println!("File opened: {:?}", file),
+        Err(error) => println!("Problem opening file: {:?}", error),
     }
 }
