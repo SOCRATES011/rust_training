@@ -1,37 +1,25 @@
-// SESSION 003
-// Methods: impl block
+// SESSION 3
+// Enums: are algebraic data types, each variant can carry data.
 #[derive(Debug)]
-struct Rectangle {
-    width: u32,
-    height: u32,
-}
-impl Rectangle {
-    //method: takes &self (immutable borrow)
-    fn area(&self) -> u32 {
-        self.width * self.height
-    }
-
-    // method: takes &mut self
-    fn double_size(&mut self) {
-        self.width *= 2;
-        self.height *= 2;
-    }
-
-    //associated function (no self) - like a static method
-    fn square(size: u32) -> Rectangle {
-        Rectangle { 
-            width: size, 
-            height: size,
-         }
-    }
+enum IpAddrKind {
+    V4(String),        // variant with attached String
+    V6(String),
 }
 
-fn main(){
-    let mut rect = Rectangle {width: 30, height: 50 };
-    println!("Area: {}", rect.area());
-    rect.double_size();
-    println!("Doubled: {:#?}", rect); // pretty debug print, requires #[derive(Debug)]
+let home = IpAddrKind::V4(String::from("127.0.0.1"));
+let loopback = IpAddrKind::V6(String::from("::1"));
 
-    let sq = Rectangle::square(20);
-    println!("Square: {:?}", sq);
+// Better example: different data per variant
+enum Message {
+    Quit,
+    Move {x: i32, y: i32},  // named fields
+    Write(String),
+    ChangeColor(i32, i32, i32),   //tuple-like
+}
+
+// Enums can also have methods
+impl Message {
+    fn call(&self) {
+        //method body
+    }
 }
